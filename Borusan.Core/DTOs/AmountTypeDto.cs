@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Borusan.Core.Models
+namespace Borusan.Core.DTOs
 {
-    public class OrderStatus : BaseEntity
+    public class AmountTypeDto : BaseDto
     {
         public string Name { get; set; }
-        public ICollection<Order> Orders { get; set; }
     }
 }
