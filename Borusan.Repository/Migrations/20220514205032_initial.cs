@@ -28,8 +28,7 @@ namespace Borusan.Repository.Migrations
                 name: "Materials",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -122,10 +121,10 @@ namespace Borusan.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2148), "Adet", null },
-                    { 2L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2161), "Koli", null },
-                    { 3L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2162), "Paket", null },
-                    { 4L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2162), "palet", null }
+                    { 1L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3213), "Adet", null },
+                    { 2L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3224), "Koli", null },
+                    { 3L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3225), "Paket", null },
+                    { 4L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3226), "palet", null }
                 });
 
             migrationBuilder.InsertData(
@@ -133,9 +132,9 @@ namespace Borusan.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2396), "Monitör", null },
-                    { 2L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2397), "Klavye", null },
-                    { 3L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2398), "Mouse", null }
+                    { 1L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3462), "Monitör", null },
+                    { 2L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3464), "Klavye", null },
+                    { 3L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3465), "Mouse", null }
                 });
 
             migrationBuilder.InsertData(
@@ -143,12 +142,12 @@ namespace Borusan.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2519), "Sipariş Alındı", null },
-                    { 2L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2520), "Yola Çıktı", null },
-                    { 3L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2521), "Dağıtım Merkezinde", null },
-                    { 4L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2522), "Dağıtıma Çıktı", null },
-                    { 5L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2523), "Teslim Edildi", null },
-                    { 6L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2524), "Teslim Edilemedi", null }
+                    { 1L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3565), "Sipariş Alındı", null },
+                    { 2L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3566), "Yola Çıktı", null },
+                    { 3L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3567), "Dağıtım Merkezinde", null },
+                    { 4L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3567), "Dağıtıma Çıktı", null },
+                    { 5L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3568), "Teslim Edildi", null },
+                    { 6L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3569), "Teslim Edilemedi", null }
                 });
 
             migrationBuilder.InsertData(
@@ -156,8 +155,8 @@ namespace Borusan.Repository.Migrations
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2632), "Kg", null },
-                    { 2L, new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2633), "Ton", null }
+                    { 1L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3674), "Kg", null },
+                    { 2L, new DateTime(2022, 5, 14, 23, 50, 32, 34, DateTimeKind.Local).AddTicks(3676), "Ton", null }
                 });
 
             migrationBuilder.CreateIndex(

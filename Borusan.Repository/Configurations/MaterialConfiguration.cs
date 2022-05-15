@@ -8,7 +8,6 @@ namespace Borusan.Repository.Configurations
     {
         public void Configure(EntityTypeBuilder<Material> builder)
         {
-            builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
         }
     }

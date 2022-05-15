@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Borusan.Core.DTOs
 {
-    public class OrderDto : BaseDto
+    public class CreateOrderDto : BaseDto
     {
         public string CustomerOrderNo { get; set; }
         public string FromAddress { get; set; }
@@ -15,8 +15,7 @@ namespace Borusan.Core.DTOs
         public long AmountTypeId { get; set; }
         public decimal Weight { get; set; }
         public long WeightUnitId { get; set; }
-        public long MaterialId { get; set; }
+        public MaterialDto MaterialDto { get; set; }
         public string Note { get; set; }
-        public long OrderStatusId { get; set; }
     }
 }

@@ -43,7 +43,12 @@ namespace Borusan.Service.Services
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _repository.GetByIdAsync(id);
+            var hasProduct = await _repository.GetByIdAsync(id);
+
+            //if (hasProduct == null)
+                //throw new NotFoundException($"{typeof(T).Name} ({id}) not found");
+
+            return hasProduct;
         }
 
         public async Task RemoveAsync(T entity)
