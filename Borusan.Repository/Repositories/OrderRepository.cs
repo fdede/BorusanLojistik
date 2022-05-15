@@ -37,5 +37,10 @@ namespace Borusan.Repository.Repositories
         {
             return await _context.Orders.Include(x => x.OrderStatus).FirstOrDefaultAsync(x => x.CustomerOrderNo == customerOrderNo);
         }
+
+        public void UpdateStatus(Order order)
+        {
+            _context.Orders.Update(order);
+        }
     }
 }

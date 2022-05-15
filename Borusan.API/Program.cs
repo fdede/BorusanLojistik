@@ -1,3 +1,4 @@
+using Borusan.API.Middlewares;
 using Borusan.Core.Repositories;
 using Borusan.Core.Services;
 using Borusan.Core.UnitOfWorks;
@@ -50,6 +51,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException();
 
 app.UseAuthorization();
 

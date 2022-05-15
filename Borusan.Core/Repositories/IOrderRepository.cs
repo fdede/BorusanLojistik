@@ -14,5 +14,6 @@ namespace Borusan.Core.Repositories
         Task<List<Order>> AddRangeAsyncWithMaterial(List<Order> orders);
         Task<Order> GetOrderWithStatusByCustomerOrderNo(string customerOrderNo);
         Task<List<Order>> GetAllOrdersWithStatus();
+        void UpdateStatus(Order order);
     }
 }

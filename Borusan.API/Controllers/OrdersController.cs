@@ -41,5 +41,11 @@ namespace Borusan.API.Controllers
             return CreateActionResult(await _orderService.GetOrderWithStatusByCustomerOrderNo(customerOrderNo));
         }
 
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateStatus(UpdateStatusDto updateStatusDto)
+        {
+            return CreateActionResult(await _orderService.UpdateStatus(updateStatusDto));
+        }
+
     }
 }

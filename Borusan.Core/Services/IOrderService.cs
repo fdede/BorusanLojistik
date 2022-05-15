@@ -14,5 +14,6 @@ namespace Borusan.Core.Services
         Task<CustomResponseDto<ResponseOrderDto>> AddAsyncWithMaterial(CreateOrderDto order);
         Task<CustomResponseDto<ResponseOrderWithStatusDto>> GetOrderWithStatusByCustomerOrderNo(string customerOrderNo);
         Task<CustomResponseDto<List<ResponseOrderWithStatusDto>>> GetAllOrdersWithStatus();
+        Task<CustomResponseDto<ResponseOrderWithStatusDto>> UpdateStatus(UpdateStatusDto updateStatusDto);
     }
 }
