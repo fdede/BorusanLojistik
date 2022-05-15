@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Borusan.Core.DTOs
 {
-    public class OrderStatusDto : BaseDto
+    public class ResponseOrderDto : BaseDto
     {
-        public string Name { get; set; }
+        public string CustomerOrderNo { get; set; }
     }
 }

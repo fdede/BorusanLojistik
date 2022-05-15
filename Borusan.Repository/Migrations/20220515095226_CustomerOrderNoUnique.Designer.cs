@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Borusan.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220514061146_initial")]
-    partial class initial
+    [Migration("20220515095226_CustomerOrderNoUnique")]
+    partial class CustomerOrderNoUnique
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,25 +51,25 @@ namespace Borusan.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2148),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8025),
                             Name = "Adet"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2161),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8034),
                             Name = "Koli"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2162),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8035),
                             Name = "Paket"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2162),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8036),
                             Name = "palet"
                         });
                 });
@@ -101,19 +101,19 @@ namespace Borusan.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2396),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8232),
                             Name = "Monitör"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2397),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8233),
                             Name = "Klavye"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2398),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8234),
                             Name = "Mouse"
                         });
                 });
@@ -170,6 +170,9 @@ namespace Borusan.Repository.Migrations
 
                     b.HasIndex("AmountTypeId");
 
+                    b.HasIndex("CustomerOrderNo")
+                        .IsUnique();
+
                     b.HasIndex("MaterialId");
 
                     b.HasIndex("OrderStatusId");
@@ -206,37 +209,37 @@ namespace Borusan.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2519),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8340),
                             Name = "Sipariş Alındı"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2520),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8341),
                             Name = "Yola Çıktı"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2521),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8342),
                             Name = "Dağıtım Merkezinde"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2522),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8343),
                             Name = "Dağıtıma Çıktı"
                         },
                         new
                         {
                             Id = 5L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2523),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8344),
                             Name = "Teslim Edildi"
                         },
                         new
                         {
                             Id = 6L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2524),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8344),
                             Name = "Teslim Edilemedi"
                         });
                 });
@@ -268,13 +271,13 @@ namespace Borusan.Repository.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2632),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8442),
                             Name = "Kg"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2022, 5, 14, 9, 11, 46, 688, DateTimeKind.Local).AddTicks(2633),
+                            CreatedDate = new DateTime(2022, 5, 15, 12, 52, 26, 434, DateTimeKind.Local).AddTicks(8444),
                             Name = "Ton"
                         });
                 });

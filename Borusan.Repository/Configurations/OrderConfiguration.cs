@@ -18,6 +18,8 @@ namespace Borusan.Repository.Configurations
             builder.Property(x => x.WeightUnitId).IsRequired();
             builder.Property(x => x.MaterialId).IsRequired();
             builder.Property(x => x.OrderStatusId).IsRequired();
+
+            builder.HasIndex(x => x.CustomerOrderNo).IsUnique();
         }
     }
 }

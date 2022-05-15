@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Borusan.Core.DTOs
 {
-    public class AmountTypeDto : BaseDto
+    public class NoContentDto
     {
-        public string Name { get; set; }
     }
 }
