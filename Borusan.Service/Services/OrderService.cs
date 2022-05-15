@@ -4,6 +4,7 @@ using Borusan.Core.Models;
 using Borusan.Core.Repositories;
 using Borusan.Core.Services;
 using Borusan.Core.UnitOfWorks;
+using Borusan.Service.Exceptions;
 
 namespace Borusan.Service.Services
 {
@@ -12,14 +13,16 @@ namespace Borusan.Service.Services
         private readonly IOrderRepository _orderRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<Material> _materialRepository;
+        private readonly IGenericRepository<OrderStatus> _statusRepository;
         private readonly IMapper _mapper;
 
-        public OrderService(IUnitOfWork unitOfWork, IGenericRepository<Order> repository, IOrderRepository orderRepository, IGenericRepository<Material> materialRepository, IMapper mapper) : base(unitOfWork, repository)
+        public OrderService(IUnitOfWork unitOfWork, IGenericRepository<Order> repository, IOrderRepository orderRepository, IGenericRepository<Material> materialRepository, IMapper mapper, IGenericRepository<OrderStatus> statusRepository) : base(unitOfWork, repository)
         {
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
             _materialRepository = materialRepository;
             _mapper = mapper;
+            _statusRepository = statusRepository;
         }
 
         public async Task<CustomResponseDto<ResponseOrderDto>> AddAsyncWithMaterial(CreateOrderDto createOrderDto)
@@ -83,6 +86,10 @@ namespace Borusan.Service.Services
         public async Task<CustomResponseDto<List<ResponseOrderWithStatusDto>>> GetAllOrdersWithStatus()
         {
             var orders = await _orderRepository.GetAllOrdersWithStatus();
+
+            if (orders == null || orders.Count == 0)
+                throw new NotFoundException($"{typeof(Order).Name} not found");
+
             var ordersDtos = _mapper.Map<List<ResponseOrderWithStatusDto>>(orders);
             return CustomResponseDto<List<ResponseOrderWithStatusDto>>.Success(200, true, ordersDtos);
         }
@@ -90,6 +97,36 @@ namespace Borusan.Service.Services
         public async Task<CustomResponseDto<ResponseOrderWithStatusDto>> GetOrderWithStatusByCustomerOrderNo(string customerOrderNo)
         {
             var order = await _orderRepository.GetOrderWithStatusByCustomerOrderNo(customerOrderNo);
+
+            if (order == null)
+                throw new NotFoundException($"{typeof(Order).Name} ({customerOrderNo}) not found");
+
+            var orderDto = _mapper.Map<ResponseOrderWithStatusDto>(order);
+            return CustomResponseDto<ResponseOrderWithStatusDto>.Success(200, true, orderDto);
+        }
+
+        public async Task<CustomResponseDto<ResponseOrderWithStatusDto>> UpdateStatus(UpdateStatusDto updateStatusDto)
+        {
+            var order = await _orderRepository.GetOrderWithStatusByCustomerOrderNo(updateStatusDto.CustomerOrderNo);
+            if (order == null)
+                throw new NotFoundException($"{typeof(Order).Name} ({updateStatusDto.CustomerOrderNo}) not found");
+
+            bool hasOrderStatus = await _statusRepository.AnyAsync(x => x.Id == updateStatusDto.OrderStatusId);
+            if (!hasOrderStatus)
+            {
+                throw new NotFoundException($"{typeof(OrderStatus).Name} ({updateStatusDto.OrderStatusId}) not found");
+            }
+            else
+            {
+                order.OrderStatusId = updateStatusDto.OrderStatusId;
+                order.UpdatedDate = DateTime.Now;
+            }
+
+            _orderRepository.Update(order);
+            await _unitOfWork.CommitAsync();
+
+            order = await _orderRepository.GetOrderWithStatusByCustomerOrderNo(updateStatusDto.CustomerOrderNo);
+
             var orderDto = _mapper.Map<ResponseOrderWithStatusDto>(order);
             return CustomResponseDto<ResponseOrderWithStatusDto>.Success(200, true, orderDto);
         }

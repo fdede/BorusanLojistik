@@ -1,6 +1,7 @@
 ﻿using Borusan.Core.Repositories;
 using Borusan.Core.Services;
 using Borusan.Core.UnitOfWorks;
+using Borusan.Service.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -45,8 +46,8 @@ namespace Borusan.Service.Services
         {
             var hasProduct = await _repository.GetByIdAsync(id);
 
-            //if (hasProduct == null)
-                //throw new NotFoundException($"{typeof(T).Name} ({id}) not found");
+            if (hasProduct == null)
+                throw new NotFoundException($"{typeof(T).Name} ({id}) not found");
 
             return hasProduct;
         }
