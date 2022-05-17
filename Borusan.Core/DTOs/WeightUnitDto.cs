@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Borusan.Core.Models
+namespace Borusan.Core.DTOs
 {
-    public class Material : BaseEntity
+    public class WeightUnitDto : BaseDto
     {
         public string Name { get; set; }
-        public string Code { get; set; }
-        public ICollection<Order> Orders { get; set; }
     }
 }

@@ -30,12 +30,22 @@ namespace Borusan.Repository.Repositories
 
         public async Task<List<Order>> GetAllOrdersWithStatus()
         {
-            return await _context.Orders.Include(x => x.OrderStatus).ToListAsync();
+            return await _context.Orders
+                .Include(x => x.OrderStatus)
+                .Include(x => x.AmountType)
+                .Include(x => x.WeightUnit)
+                .Include(x => x.Material)
+                .ToListAsync();
         }
 
         public async Task<Order> GetOrderWithStatusByCustomerOrderNo(string customerOrderNo)
         {
-            return await _context.Orders.Include(x => x.OrderStatus).FirstOrDefaultAsync(x => x.CustomerOrderNo == customerOrderNo);
+            return await _context.Orders
+                .Include(x => x.OrderStatus)
+                .Include(x => x.AmountType)
+                .Include(x => x.WeightUnit)
+                .Include(x => x.Material)
+                .FirstOrDefaultAsync(x => x.CustomerOrderNo == customerOrderNo);
         }
 
         public void UpdateStatus(Order order)
