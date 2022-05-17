@@ -3,5 +3,6 @@
     public class MaterialDto : BaseDto
     {
         public string Name { get; set; }
+        public string Code { get; set; }
     }
 }
