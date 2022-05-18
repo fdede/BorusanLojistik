@@ -35,10 +35,10 @@ namespace Borusan.Service.Services
 
             Order order = _mapper.Map<Order>(createOrderDto);
 
-            bool hasMaterial = await _materialRepository.AnyAsync(x => x.Id == order.Material.Id);
-            if (hasMaterial)
+            Material hasMaterial = _materialRepository.Where(x => x.Code == order.Material.Code).FirstOrDefault();
+            if (hasMaterial != null)
             {
-                order.MaterialId = order.Material.Id;
+                order.MaterialId = hasMaterial.Id;
                 order.Material = null;
             }
 
@@ -64,10 +64,10 @@ namespace Borusan.Service.Services
 
                 Order order = _mapper.Map<Order>(orderDto);
 
-                bool hasMaterial = await _materialRepository.AnyAsync(x => x.Id == order.Material.Id);
-                if (hasMaterial)
+                Material hasMaterial = _materialRepository.Where(x => x.Code == order.Material.Code).FirstOrDefault();
+                if (hasMaterial != null)
                 {
-                    order.MaterialId = order.Material.Id;
+                    order.MaterialId = hasMaterial.Id;
                     order.Material = null;
                 }
 

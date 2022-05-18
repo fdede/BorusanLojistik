@@ -16,7 +16,7 @@ namespace Borusan.Service.Validations
             RuleFor(x => x.WeightUnitId).InclusiveBetween(1, int.MaxValue).WithMessage("{PropertyName} must be greater than 0");
             RuleFor(x => x.MaterialDto).NotNull().WithMessage("{PropertyName} is required");
             RuleFor(x => x.MaterialDto.Name).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
-            RuleFor(x => x.MaterialDto.Id).InclusiveBetween(1, int.MaxValue).WithMessage("{PropertyName} must be greater than 0");
+            RuleFor(x => x.MaterialDto.Code).NotNull().WithMessage("{PropertyName} is required").NotEmpty().WithMessage("{PropertyName} is required");
         }
     }
 }

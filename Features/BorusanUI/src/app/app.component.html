@@ -1,0 +1,50 @@
+<div class="container">
+  <div *ngIf="showAlert" class="alert alert-danger" role="alert">
+    Sipariş seçimi yapılmadı!
+  </div>
+  <div class="top-section">
+    <h4>Sipariş Listesi</h4>
+    <button id="editButton" type="button" class="btn btn-primary" (click)="onSave()">Düzenle</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Seçiniz</th>
+        <th scope="col">Müşteri Sipariş No</th>
+        <th scope="col">Çıkış Adresi</th>
+        <th scope="col">Varış Adresi</th>
+        <th scope="col">Miktar</th>
+        <th scope="col">Miktar Birimi</th>
+        <th scope="col">Ağırlık</th>
+        <th scope="col">Ağırlık Birimi</th>
+        <th scope="col">Malzeme Kodu</th>
+        <th scope="col">Not</th>
+        <th scope="col">Statü</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders; index as i">
+        <td scope="row">
+          <input value="{{ order.customerOrderNo }}"
+                  id="type_radio_{{ i }}"
+                  name="type_radio"
+                  type="radio"
+                  (change)="changeOrder($event)" />
+        </td>
+        <td>{{ order.customerOrderNo }}</td>
+        <td>{{ order.fromAddress }}</td>
+        <td>{{ order.toAddress }}</td>
+        <td>{{ order.amount }}</td>
+        <td>{{ order.amountTypeDto.name }}</td>
+        <td>{{ order.weight }}</td>
+        <td>{{ order.weightUnitDto.name }}</td>
+        <td>{{ order.materialDto.code }}</td>
+        <td>{{ order.mote }}</td>
+        <td>{{ order.orderStatusDto.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
